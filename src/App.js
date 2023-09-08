@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <div>안녕</div>
+      <div><i className="fa-solid fa-house"></i>안녕</div>
     </>
   );
 }
