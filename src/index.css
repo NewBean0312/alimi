@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* 웹폰트 불러오기 */
 @font-face {
   font-family: "GmarketSansMedium";
