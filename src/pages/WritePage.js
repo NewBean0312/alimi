@@ -1,7 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import { useTodosStatus } from "../hooks";
+import { useNoticeSnackbarStatus } from "../components/NoticeSnackbar";
 
 export default function WritePage() {
+  const noticeSnackbarStatus = useNoticeSnackbarStatus();
   const todosStatus = useTodosStatus();
 
   const onSubmit = (e) => {
@@ -23,7 +25,12 @@ export default function WritePage() {
       return;
     }
 
-    todosStatus.addTodo(form.regDate.value, form.content.value);
+    const newTodoId = todosStatus.addTodo(
+      form.regDate.value,
+      form.content.value
+    );
+
+    noticeSnackbarStatus.open(`${newTodoId}번 할 일이 수정되었습니다.`, "info");
   };
 
   return (
