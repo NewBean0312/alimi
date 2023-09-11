@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import App from "./App";
 import { RecoilRoot } from "recoil";
 import { HashRouter } from "react-router-dom";
+
+import App from "./App";
 
 export default function Root() {
   const theme = createTheme({
