@@ -15,6 +15,10 @@ export default function Root() {
         main: "#32435f",
         contrastText: "#ffffff",
       },
+      text: {
+        main: "#a67f78",
+        contrastText: "#ffffff",
+      }
     },
   });
 
