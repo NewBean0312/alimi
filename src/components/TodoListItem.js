@@ -1,7 +1,12 @@
 import { Button, Chip } from "@mui/material";
 import classNames from "classnames";
 
-export default function TodoListItem({ todo, index, openDrawer }) {
+export default function TodoListItem({
+  todo,
+  index,
+  openDrawer,
+  onCompletedBtnClicked,
+}) {
   return (
     <>
       <li key={todo.id} className="mt-10">
@@ -19,17 +24,21 @@ export default function TodoListItem({ todo, index, openDrawer }) {
           />
         </div>
         <div className="flex shadow mt-4 rounded-[20px]">
-          <Button className="w-[130px] flex-shrink-0 !items-start !rounded-[20px_0_0_20px]">
+          <Button
+            className="w-[130px] flex-shrink-0 !items-start !rounded-[20px_0_0_20px]"
+            color="inherit"
+            onClick={() => onCompletedBtnClicked(todo.id)}
+          >
             <span
               className={classNames(
                 "text-3xl",
                 "flex items-center",
                 "h-[50px]",
                 {
-                  "text-[color:var(--mui-color-primary-main)]": index % 2 == 0,
+                  "text-[color:var(--mui-color-primary-main)]": todo.completed,
                 },
                 {
-                  "text-[color:#b0b0b0]": index % 2 != 0,
+                  "text-[color:#b0b0b0]": !todo.completed,
                 }
               )}
             >
