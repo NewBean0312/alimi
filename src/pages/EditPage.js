@@ -1,10 +1,11 @@
 import { Button, TextField } from "@mui/material";
 import { useTodosStatus } from "../hooks";
 import { useNoticeSnackbarStatus } from "../components/NoticeSnackbar";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 export default function EditPage() {
-  const {id} = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
   const noticeSnackbarStatus = useNoticeSnackbarStatus();
   const todosStatus = useTodosStatus();
@@ -30,22 +31,25 @@ export default function EditPage() {
       return;
     }
 
-    const newTodoId = todosStatus.addTodo(
+    const newTodoId = todosStatus.modifyTodoById(
+      todo.id,
       form.regDate.value,
       form.content.value
     );
 
-    noticeSnackbarStatus.open(`${newTodoId}번 할 일이 수정되었습니다.`);
-    
-    form.content.value = "";
-    form.content.focus();
+    noticeSnackbarStatus.open(`${todo.id}번 할 일이 수정되었습니다.`);
+
+    // 이전 경로로 돌아가기
+    navigate(-1);
   };
 
+  // regDate의 날짜를 문자로 변경
   const regDateForInput = todo.regDate.substr(0, 16).replace(" ", "T");
 
   return (
     <>
       <form className="flex flex-1 flex-col p-10 gap-7" onSubmit={onSubmit}>
+        {/* 날짜 입력 영역 */}
         <TextField
           type="datetime-local"
           name="regDate"
@@ -53,6 +57,7 @@ export default function EditPage() {
           focused
           defaultValue={regDateForInput}
         />
+        {/* 내용 입력 영역 */}
         <TextField
           name="content"
           label="무엇을 해야 하나요?"
