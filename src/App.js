@@ -6,8 +6,10 @@ import {
   Routes,
   useLocation,
 } from "react-router-dom";
+
 import MainPage from "./pages/MainPage";
 import WritePage from "./pages/WritePage";
+import EditPage from "./pages/EditPage";
 import { NoticeSnackbar } from "./components/NoticeSnackbar";
 
 function App() {
@@ -22,12 +24,12 @@ function App() {
           <div className="flex-1 flex justify-end">
             {location.pathname != "/write" && (
               <NavLink to="/write" className="select-none">
-                Write
+                Add Todo
               </NavLink>
             )}
             {location.pathname == "/write" && (
               <NavLink to="/main" className="select-none">
-                이전
+                List
               </NavLink>
             )}
           </div>
@@ -37,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/main" element={<MainPage />} />
         <Route path="/write" element={<WritePage />} />
+        <Route path="/edit/:id" element={<EditPage />} />
         <Route path="*" element={<Navigate to="/main" />} />
       </Routes>
     </>
