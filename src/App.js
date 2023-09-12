@@ -19,15 +19,14 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar>
-          <div className="flex-1"></div>
-          <div className="font-bold select-none">HAPPY NOTE</div>
+          <div className="font-bold select-none">Todo List</div>
           <div className="flex-1 flex justify-end">
-            {location.pathname != "/write" && (
+            {location.pathname == "/main" && (
               <NavLink to="/write" className="select-none">
                 Add Todo
               </NavLink>
             )}
-            {location.pathname == "/write" && (
+            {location.pathname != "/main" && (
               <NavLink to="/main" className="select-none">
                 List
               </NavLink>
