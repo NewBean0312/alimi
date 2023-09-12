@@ -30,7 +30,10 @@ export default function WritePage() {
       form.content.value
     );
 
-    noticeSnackbarStatus.open(`${newTodoId}번 할 일이 수정되었습니다.`, "info");
+    noticeSnackbarStatus.open(`${newTodoId}번 할 일이 추가되었습니다.`, "info");
+
+    form.content.value = "";
+    form.content.focus();
   };
 
   return (
