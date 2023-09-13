@@ -10,7 +10,7 @@ export const { persistAtom: persistAtomLastTodoId } = recoilPersist({
 });
 
 export const { persistAtom: persistAtomCommon } = recoilPersist({
-  key: "persistAtomCommon"
+  key: "persistAtomCommon",
 });
 
 export const todosAtom = atom({
@@ -28,5 +28,11 @@ export const lastTodoIdAtom = atom({
 export const TodoList__filterCompletedIndexAtom = atom({
   key: "app/TodoList__filterCompletedIndexAtom",
   default: 0,
-  effects_UNSTABLE: [persistAtomCommon]
+  effects_UNSTABLE: [persistAtomCommon],
+});
+
+export const TodoList__sortIndexAtom = atom({
+  key: "app/TodoList__sortIndexAtom",
+  default: 0,
+  effects_UNSTABLE: [persistAtomCommon],
 });
