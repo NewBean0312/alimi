@@ -30,6 +30,7 @@ export default function TodoList() {
 
     return todosStatus.todos;
   };
+  
   const filterTodos = getFliteredTodos();
 
   return (

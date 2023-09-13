@@ -17,7 +17,7 @@ export default function TodoListItem({
             className="!pt-1"
           />
           <Chip
-            label={todo.regDate}
+            label={todo.performDate}
             variant="outlined"
             color="primary"
             className="!pt-1"
