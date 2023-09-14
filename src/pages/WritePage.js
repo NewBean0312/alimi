@@ -1,10 +1,12 @@
 import { Button, TextField } from "@mui/material";
 import { useTodosStatus } from "../hooks";
 import { useNoticeSnackbarStatus } from "../components/NoticeSnackbar";
+import { useNavigate } from "react-router-dom";
 
 export default function WritePage() {
   const noticeSnackbarStatus = useNoticeSnackbarStatus();
   const todosStatus = useTodosStatus();
+  const navigate = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -34,6 +36,9 @@ export default function WritePage() {
 
     form.content.value = "";
     form.content.focus();
+
+    // 이전 경로로 돌아가기
+    navigate(-1);
   };
 
   return (

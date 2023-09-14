@@ -5,6 +5,7 @@ import {
   Route,
   Routes,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 
 import MainPage from "./pages/MainPage";
@@ -14,6 +15,7 @@ import { NoticeSnackbar } from "./components/NoticeSnackbar";
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -27,9 +29,9 @@ function App() {
               </NavLink>
             )}
             {location.pathname != "/main" && (
-              <NavLink to="/main" className="select-none">
+              <span to="/main" className="select-none" onClick={(() => navigate(-1))}>
                 List
-              </NavLink>
+              </span>
             )}
           </div>
         </Toolbar>
