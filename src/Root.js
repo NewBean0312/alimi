@@ -16,7 +16,7 @@ export default function Root() {
         contrastText: "#ffffff",
       },
       text: {
-        main: "#a67f78",
+        main: "#c97f78",
         contrastText: "#ffffff",
       }
     },

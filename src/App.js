@@ -21,19 +21,29 @@ function App() {
     <>
       <AppBar position="static">
         <Toolbar>
-          <div className="font-bold select-none">Todo List</div>
-          <div className="flex-1 flex justify-end">
-            {location.pathname == "/main" && (
-              <NavLink to="/write" className="select-none">
-                Add Todo
-              </NavLink>
-            )}
-            {location.pathname != "/main" && (
-              <span to="/main" className="select-none" onClick={(() => navigate(-1))}>
-                List
-              </span>
-            )}
-          </div>
+          <NavLink
+            to="/main"
+            className="self-stretch flex items-center mr-auto font-bold select-none"
+          >
+            Todo List
+          </NavLink>
+          {location.pathname == "/main" && (
+            <NavLink
+              to="/write"
+              className="select-none self-stretch flex items-center"
+            >
+              Add Todo
+            </NavLink>
+          )}
+          {location.pathname != "/main" && (
+            <span
+              to="/main"
+              className="flex items-center select-none self-stretch cursor-pointer"
+              onClick={() => navigate(-1)}
+            >
+              List
+            </span>
+          )}
         </Toolbar>
       </AppBar>
       <NoticeSnackbar />

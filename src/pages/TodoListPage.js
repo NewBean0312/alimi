@@ -95,7 +95,7 @@ export default function TodoList() {
           value={2}
         />
       </Tabs>
-      {/* 추가지역 시작 */}
+      {/* 정렬 탭 메뉴 */}
       <Tabs
         variant="scrollable"
         value={sortIndex}
@@ -148,8 +148,8 @@ export default function TodoList() {
           value={3}
         />
       </Tabs>
-      {/* 추가지역 끝 */}
-      <div className="mt-4 px-4">
+      {/* List Item Section */}
+      <div className="px-5 pb-10 sm:px-8 sm:pb-6">
         <ul>
           {sortedTodos.map((todo, index) => (
             <TodoListItem

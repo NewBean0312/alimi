@@ -43,7 +43,10 @@ export default function WritePage() {
 
   return (
     <>
-      <form className="flex flex-1 flex-col p-10 gap-7" onSubmit={onSubmit}>
+      <form
+        className="flex flex-1 flex-col gap-7 p-6 sm:p-8"
+        onSubmit={onSubmit}
+      >
         <TextField
           type="datetime-local"
           name="performDate"

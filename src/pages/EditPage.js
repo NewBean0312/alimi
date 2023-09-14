@@ -48,7 +48,10 @@ export default function EditPage() {
 
   return (
     <>
-      <form className="flex flex-1 flex-col p-10 gap-7" onSubmit={onSubmit}>
+      <form
+        className="flex flex-1 flex-col gap-7 p-6 sm:p-8"
+        onSubmit={onSubmit}
+      >
         {/* 날짜 입력 영역 */}
         <TextField
           type="datetime-local"

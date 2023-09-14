@@ -9,21 +9,22 @@ export default function TodoListItem({
 }) {
   return (
     <>
-      <li key={todo.id} className="mt-10">
+      <li key={todo.id} className="mt-6 sm:mt-10">
         <div className="flex gap-2">
           <Chip
             label={`번호 : ${todo.id}`}
             variant="outlined"
-            className="!pt-1"
+            className="!pt-1 !text-white"
+            style={{backgroundColor:"var(--mui-color-primary-main)"}}
           />
           <Chip
-            label={todo.performDate}
+            label={todo.performDate.substr(2, 14)}
             variant="outlined"
-            color="primary"
-            className="!pt-1"
+            className="!pt-1 !text-white"
+            style={{backgroundColor:"#8f8681"}}
           />
         </div>
-        <div className="flex shadow mt-4 rounded-[20px]">
+        <div className="flex shadow mt-2 sm:mt-4 rounded-[20px]" style={{backgroundColor:"#e1dcd9"}}>
           <Button
             className="w-[130px] flex-shrink-0 !items-start !rounded-[20px_0_0_20px]"
             color="inherit"
@@ -35,7 +36,7 @@ export default function TodoListItem({
                 "flex items-center",
                 "h-[50px]",
                 {
-                  "text-[color:var(--mui-color-primary-main)]": todo.completed,
+                  "text-[color:var(--mui-color-text-main)]": todo.completed,
                 },
                 {
                   "text-[color:#b0b0b0]": !todo.completed,
