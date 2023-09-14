@@ -30,8 +30,14 @@ export default function TodoList() {
 
     return todosStatus.todos;
   };
-  
-  const filterTodos = getFliteredTodos();
+
+  const filteredTodos = getFliteredTodos();
+
+  const sortedTodos = [...filteredTodos].sort((a, b) => {
+    if (a.performDate == b.performDate) return 0;
+
+    return a.performDate > b.performDate ? 1 : -1;
+  });
 
   return (
     <>
@@ -125,7 +131,7 @@ export default function TodoList() {
       {/* 추가지역 끝 */}
       <div className="mt-4 px-4">
         <ul>
-          {filterTodos.map((todo, index) => (
+          {sortedTodos.map((todo, index) => (
             <TodoListItem
               key={todo.id}
               todo={todo}
