@@ -75,7 +75,7 @@ export default function EditPage() {
             <i className="fa-solid fa-pen"></i>
           </span>
           <span>&nbsp;&nbsp;</span>
-          <span>할 일 수정</span>
+          <span>{todo.id}번 할 일 수정</span>
         </Button>
       </form>
     </>
