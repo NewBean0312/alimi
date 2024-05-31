@@ -10,24 +10,28 @@ import {
 } from "../atoms";
 
 export default function TodoList() {
-  const todosStatus = useTodosStatus();
-  const todoOptionDrawerStatus = useTodoOptionDrawerStatus();
-  const onCompletedBtnClicked = (id) => todosStatus.toogleTodoCompletedById(id);
+  const todosStatus = useTodosStatus(); // Todo 목록 상태 가져오기
+  const todoOptionDrawerStatus = useTodoOptionDrawerStatus(); // Todo 옵션 드로어 상태 가져오기
+  const onCompletedBtnClicked = (id) => todosStatus.toogleTodoCompletedById(id); // Todo 완료 상태 관리
   const [filterCompletedIndex, setFilterCompletedIndex] = useRecoilState(
     TodoList__filterCompletedIndexAtom
-  );
+  ); // 완료 상태 index를 Recoil로 저장
 
-  const [sortIndex, setSortIndex] = useRecoilState(TodoList__sortIndexAtom);
+  const [sortIndex, setSortIndex] = useRecoilState(TodoList__sortIndexAtom); // 정렬 index를 Recoil로 저장
 
+  // index에 따라 할 일 목록을 필터링
   const getFliteredTodos = () => {
+    // 미완료
     if (filterCompletedIndex == 1) {
       return todosStatus.todos.filter((todo) => !todo.completed);
     }
 
+    // 완료
     if (filterCompletedIndex == 2) {
       return todosStatus.todos.filter((todo) => todo.completed);
     }
 
+    // 그 외는 전체 Todo
     return todosStatus.todos;
   };
 
@@ -35,18 +39,21 @@ export default function TodoList() {
 
   const getSortedTodos = () => {
     if (sortIndex == 0) {
+      // 시간 오름차순
       return [...filteredTodos].sort((a, b) => {
         if (a.performDate == b.performDate) return 0;
 
         return a.performDate > b.performDate ? 1 : -1;
       });
     } else if (sortIndex == 1) {
+      // 시간 내림차순
       return [...filteredTodos].sort((a, b) => {
         if (a.performDate == b.performDate) return 0;
 
         return a.performDate < b.performDate ? 1 : -1;
       });
     } else if (sortIndex == 2) {
+      // 작성 오름차순
       return [...filteredTodos].sort((a, b) => {
         if (a.id == b.id) return 0;
 
@@ -61,7 +68,9 @@ export default function TodoList() {
 
   return (
     <>
+      {/* Todo 옵션 */}
       <TodoOptionDrawer status={todoOptionDrawerStatus} />
+      {/* 탭 */}
       <Tabs
         variant="fullWidth"
         value={filterCompletedIndex}
@@ -148,7 +157,7 @@ export default function TodoList() {
           value={3}
         />
       </Tabs>
-      {/* List Item Section */}
+      {/* Todo List Section */}
       <div className="px-5 pb-10 sm:px-8 sm:pb-6">
         <ul>
           {sortedTodos.map((todo, index) => (

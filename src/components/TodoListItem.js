@@ -11,20 +11,26 @@ export default function TodoListItem({
     <>
       <li key={todo.id} className="mt-6 sm:mt-10">
         <div className="flex gap-2">
+          {/* Todo ID 표시 */}
           <Chip
             label={`번호 : ${todo.id}`}
             variant="outlined"
             className="!pt-1 !text-white"
-            style={{backgroundColor:"var(--mui-color-primary-main)"}}
+            style={{ backgroundColor: "var(--mui-color-primary-main)" }}
           />
+          {/* Todo 날짜 표시 */}
           <Chip
             label={todo.performDate.substr(2, 14)}
             variant="outlined"
             className="!pt-1 !text-white"
-            style={{backgroundColor:"#8f8681"}}
+            style={{ backgroundColor: "#8f8681" }}
           />
         </div>
-        <div className="flex shadow mt-2 sm:mt-4 rounded-[20px]" style={{backgroundColor:"#e1dcd9"}}>
+        <div
+          className="flex shadow mt-2 sm:mt-4 rounded-[20px]"
+          style={{ backgroundColor: "#e1dcd9" }}
+        >
+          {/* 완료 버튼 */}
           <Button
             className="w-[130px] flex-shrink-0 !items-start !rounded-[20px_0_0_20px]"
             color="inherit"
@@ -47,6 +53,7 @@ export default function TodoListItem({
             </span>
           </Button>
           <div className="flex-shrink-0 w-[2px] bg-[#b0b0b0] my-5 mr-6"></div>
+          {/* Todo 내용 */}
           <div
             className="whitespace-pre-wrap leading-relaxed
                     hover:text-[color:var(--mui-color-primary-main)] 
@@ -54,6 +61,7 @@ export default function TodoListItem({
           >
             {todo.content}
           </div>
+          {/* Todo 옵션 드로어 */}
           <Button
             onClick={() => openDrawer(todo.id)}
             className="w-[130px] flex-shrink-0 !items-start !rounded-[0__20px_20px_0]"

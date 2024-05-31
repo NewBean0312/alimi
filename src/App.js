@@ -25,23 +25,25 @@ function App() {
             to="/main"
             className="self-stretch flex items-center mr-auto font-bold select-none"
           >
-            Todo List
+            알리미
           </NavLink>
+          {/* main 화면 시 */}
           {location.pathname == "/main" && (
             <NavLink
               to="/write"
               className="select-none self-stretch flex items-center"
             >
-              Add Todo
+              추가
             </NavLink>
           )}
+          {/* main 화면이 아닐 시 */}
           {location.pathname != "/main" && (
             <span
               to="/main"
               className="flex items-center select-none self-stretch cursor-pointer"
               onClick={() => navigate(-1)}
             >
-              List
+              리스트
             </span>
           )}
         </Toolbar>
